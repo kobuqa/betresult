@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+import {Routes, Route, useNavigate} from "react-router-dom";
 import HomePage from "../pages/home";
 import AdminPage from "../pages/admin";
 import {AppBar, Box, Button, ThemeProvider} from "@mui/material";
