@@ -20,7 +20,7 @@ export const useAxios = <T>(axiosFunction: () => Promise<AxiosResponse<T>>) => {
 	}
 	useEffect(() => {
 		handleRequest();
-	}, [])
+	}, [handleRequest])
 
 	return {data, isLoading, isError}
 }
