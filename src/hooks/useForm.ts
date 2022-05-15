@@ -1,7 +1,7 @@
 import {ChangeEvent, useState} from "react";
 
-export const useForm = (initialValue?: { [key: string]: boolean | string }) => {
-	const [formValue, setFormValue] = useState<{ [key: string]: string | boolean }>(initialValue || {});
+export const useForm = <T extends {[key: string]: string | boolean}>(initialValue: T) => {
+	const [formValue, setFormValue] = useState<T>(initialValue);
 	const register = (fieldName: string, type = 'text') => {
 		if (type === 'switch') {
 			return {

@@ -1,7 +1,7 @@
 export type GameType = {
-	id: number;
 	teamOne: string;
 	teamTwo: string;
+	gameResult: string;
 	totalLessCoefficient: number;
 	totalMoreCoefficient: number;
 	totalLess: boolean;
