@@ -41,9 +41,9 @@ const AddGameForm = () => {
 			<TextField {...register('totalLessCoefficient')} label="Total Less Coefficient"/>
 			<TextField {...register('totalMoreCoefficient')} label="Total More Coefficient"/>
 			<Stack direction="row" spacing={1} alignItems="center">
-				<Typography>Less</Typography>
-				<Switch {...register('totalLess', 'switch')} />
 				<Typography>More</Typography>
+				<Switch {...register('totalLess', 'switch')} />
+				<Typography>Less</Typography>
 			</Stack>
 			<Button variant="outlined" onClick={handleAddGame}>Add Game</Button>
 		</Paper>
