@@ -16,9 +16,9 @@ const BidCalculator = () => {
 			<Box display="flex" flexDirection="column" rowGap={2}>
 				<Typography align="center" variant="h5">Calculate Result</Typography>
 				<Stack direction="row" spacing={1} alignItems="center">
-					<Typography>Less</Typography>
-					<Switch {...register('totalLess', 'switch')} />
 					<Typography>More</Typography>
+					<Switch {...register('totalLess', 'switch')} />
+					<Typography>Less</Typography>
 				</Stack>
 				<TextField variant="outlined" label="Bid Amount" type="number" {...register('sum')}/>
 				<Button variant="outlined" onClick={handleCalculate}>Calculate</Button>

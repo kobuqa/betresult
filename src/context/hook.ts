@@ -20,12 +20,14 @@ export const useStorage = (): useStorageReturnType => {
 		games: context.state.games,
 		setGames: useCallback(
 			(payload: GameType[]) => context.dispatch({ type: 'setGames', payload }),
-			[context],
+			// eslint-disable-next-line
+			[],
 		),
 		profit: context.state.profit,
 		setProfit: useCallback(
 			(payload: number) => context.dispatch({ type: 'setProfit', payload }),
-			[context],
+			// eslint-disable-next-line
+			[],
 		),
 	};
 };

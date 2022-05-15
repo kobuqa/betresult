@@ -13,15 +13,9 @@ D
 src/hooks/useForm.ts,0/5/05de9487c20095cb90bd19dbccb57c91bc30454b
 B
 src/theme/theme.ts,b/5/b5edb7ce66b87cf70c42d4017e9dd7f709722350
-=
-src/index.tsx,5/a/5ab44fe33ca96299f51ad4778a73e425b92bf439
-I
-src/pages/admin/index.tsx,5/e/5ea68266cfa364f9d3d8e80411c98368048d38d8
 F
 src/types/game.type.ts,8/d/8d6f51c3f2ffb035bbfc051da2d73a173f9d3139
 H
 src/pages/home/index.tsx,a/d/ad647d063ca59ac8dc4b75adc4b3e83e2de4e2b8
 =
 tsconfig.json,6/1/61ebb9fd6e8cf9082658121d5d81e297791dacd0
-A
-src/app/index.tsx,5/1/51fa7ebb5a433e00bc16e0fa88d8b26665b9cc6d
