@@ -1,15 +1,15 @@
 import {AxiosResponse} from "axios";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
-export const useAxios = <T>(axiosFunction: () => Promise<AxiosResponse<T>>) => {
+export const useAxios = <T>(axiosFunction: (params?: {[key: string]: any}) => Promise<AxiosResponse<T>>, params?: {[key: string]: any}) => {
 	const [data, setData] = useState<T | []>([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
 
-	const handleRequest = async () => {
+	const handleRequest =  useCallback (async () => {
 		setIsLoading(true);
 		try {
-			const {data: response} = await axiosFunction();
+			const {data: response} = await axiosFunction(params);
 			setData(response);
 			setIsLoading(false);
 			if (isError) setIsError(false);
@@ -17,9 +17,12 @@ export const useAxios = <T>(axiosFunction: () => Promise<AxiosResponse<T>>) => {
 			setIsLoading(false)
 			setIsError(true);
 		}
-	}
+		// eslint-disable-next-line
+	}, []);
+
 	useEffect(() => {
 		handleRequest();
+		// eslint-disable-next-line
 	}, [])
 
 	return {data, isLoading, isError}

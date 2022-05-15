@@ -9,6 +9,7 @@ import {
 	Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import {Paper} from "@mui/material";
 
 ChartJS.register(
 	CategoryScale,
@@ -51,5 +52,9 @@ export const data = {
 };
 
 export function Chart() {
-	return <Bar options={options} data={data} />;
+	return(
+		<Paper sx={{padding: 2}}>
+			<Bar options={options} data={data} />
+		</Paper>
+	)
 }
