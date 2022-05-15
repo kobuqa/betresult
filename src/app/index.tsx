@@ -10,10 +10,10 @@ const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
 			<Box>
-				<AppBar position="static" color="transparent">
-					<Box display="flex">
-						<Button onClick={() => navigate('/')}>Home</Button>
-						<Button onClick={() => navigate('/admin')}>Admin</Button>
+				<AppBar position="static" color="transparent" sx={{padding: 1}}>
+					<Box display="flex" columnGap={1}>
+						<Button variant="outlined" onClick={() => navigate('/')}>Home</Button>
+						<Button variant="outlined" onClick={() => navigate('/admin')}>Admin</Button>
 					</Box>
 				</AppBar>
 				<Box p={2}>
