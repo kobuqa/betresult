@@ -1,68 +1,38 @@
 import {
-	Box,
-	Button,
-	Paper,
-	Stack,
-	Switch,
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableRow,
-	TextField,
+	Grid, Paper,
 	Typography
 } from "@mui/material";
 
-import {games} from "../../mocks/games";
-import {useForm} from "../../hooks/useForm";
+import {getGames} from "../../api/getGames";
+import {useAxios} from "../../hooks/useAxios";
+import {GameType} from "../../types/game.type";
+import ResultTable from "../../shared/result-table";
+import BidCalculator from "./components/bid-calculator";
+import {Chart} from "./components/chart";
 
 const HomePage = () => {
 
-	const {formValue, register} = useForm({totalLess: false, sum: '0'})
-	const handleCalculate = () => console.log(formValue, 'Sent!')
-
+	const {data} = useAxios<GameType[]>(getGames);
 	return (
-		<Box display="flex" columnGap={4}>
-			<Paper sx={{padding: 3, maxWidth: '30rem'}}>
-				<Box display="flex" flexDirection="column" rowGap={2}>
-					<Typography align="center" variant="h5">Calculate Result</Typography>
-					<Stack direction="row" spacing={1} alignItems="center">
-						<Typography>Less</Typography>
-						<Switch {...register('totalLess', 'switch')} />
-						<Typography>More</Typography>
-					</Stack>
-					<TextField variant="outlined" label="Bid Amount" type="number" {...register('sum')}/>
-					<Button variant="outlined" onClick={handleCalculate}>Calculate</Button>
-				</Box>
-			</Paper>
-			<Paper sx={{maxWidth: '30rem'}}>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableCell align="center">Team One</TableCell>
-							<TableCell align="center">Team Two</TableCell>
-							<TableCell align="center">Total Less Coefficient</TableCell>
-							<TableCell align="center">Total More Coefficient</TableCell>
-							<TableCell align="center">Total Less</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{games.map(game => (
-							<TableRow key={game.id}>
-								<TableCell align="center">{game.teamOne}</TableCell>
-								<TableCell align="center">{game.teamTwo}</TableCell>
-								<TableCell align="center">{game.totalLessCoefficient}</TableCell>
-								<TableCell align="center">{game.totalMoreCoefficient}</TableCell>
-								<TableCell align="center">{game.totalLess ? '+' : '-'}</TableCell>
-							</TableRow>
-						))}
-					</TableBody>
-				</Table>
-			</Paper>
-			<Paper sx={{padding: 3, maxWidth: '30rem', height: '2rem'}}>
-				<Typography>Profit: {0}</Typography>
-			</Paper>
-		</Box>
+		<Grid container spacing={3}>
+			<Grid item xs={12} md={12} lg={6} >
+				<ResultTable data={data}/>
+			</Grid>
+			<Grid item xs={12} sm={12} md={6}>
+				<Paper sx={{padding: 2}}>
+					<Chart />
+				</Paper>
+			</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={6} >
+				<BidCalculator/>
+			</Grid>
+			<Grid item xs={12} sm={6} md={6} lg={6} >
+				<Paper sx={{ height: '100%', padding: 2}}>
+					<Typography>Profit: {0}</Typography>
+				</Paper>
+			</Grid>
+
+		</Grid>
 	);
 };
 
